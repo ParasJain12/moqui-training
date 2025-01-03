@@ -1,0 +1,6 @@
+<component name="MoquiTraining" version="1.0.0">
+    <resources>
+        <resource type="entity" location="entity" />
+        <resource type="screen" location="screen" />
+    </resources>
+</component>
