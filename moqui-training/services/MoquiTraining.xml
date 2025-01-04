@@ -10,6 +10,6 @@
     <validations>
         <!-- Input Validations -->
         <validation field="trainingName" type="required"/>
-        <validation field="trainingDate" type="date" format="MM/dd/yyyy"/>
+        <validation field="trainingDate" type="date" format="MM/DD/YYYY"/>
     </validations>
 </service>

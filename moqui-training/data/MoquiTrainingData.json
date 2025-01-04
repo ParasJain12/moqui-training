@@ -1,4 +1,11 @@
 [
-  {"trainingId": "T006", "trainingName": "DBMS", "trainingDate": "2025-02-10", "trainingPrice": 18000.00, "trainingDuration": 6},
-  {"trainingId": "T007", "trainingName": "Comm Skills", "trainingDate": "2025-02-20", "trainingPrice": 299.00, "trainingDuration": 2}
+  {"_dataType" : "demo"},
+  {
+    "_entity" : "moqui.training.MoquiTraining",
+    "trainingId": "T009",
+    "trainingName" : "Cloud Computing",
+    "trainingDate" : "2024-11-03",
+    "trainingPrice" : 3200,
+    "trainingDuration": 3
+  }
 ]
