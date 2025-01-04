@@ -1,6 +1,1 @@
-<component name="MoquiTraining" version="1.0.0">
-    <resources>
-        <resource type="entity" location="entity" />
-        <resource type="screen" location="screen" />
-    </resources>
-</component>
+<component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/moqui-conf-3.xsd" name="moqui-training" version="1.0.0 "/>
