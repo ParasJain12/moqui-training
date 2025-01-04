@@ -1,4 +1,4 @@
 [
-  {"trainingId": "T003", "trainingName": "Database Design", "trainingDate": "2025-02-10", "trainingPrice": 599.99, "trainingDuration": 6},
-  {"trainingId": "T004", "trainingName": "React Essentials", "trainingDate": "2025-02-20", "trainingPrice": 799.99, "trainingDuration": 12}
+  {"trainingId": "T006", "trainingName": "DBMS", "trainingDate": "2025-02-10", "trainingPrice": 18000.00, "trainingDuration": 6},
+  {"trainingId": "T007", "trainingName": "Comm Skills", "trainingDate": "2025-02-20", "trainingPrice": 299.00, "trainingDuration": 2}
 ]

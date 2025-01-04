@@ -1,3 +1,7 @@
-trainingId,trainingName,trainingDate,trainingPrice,trainingDuration
-T005,Python for Data Science,2025-03-05,899.99,15
-T006,Cloud Computing Basics,2025-03-15,999.99,20
+moqui.training.MoquiTraining
+
+trainingName,trainingDate
+
+"TOC","01/20/2024"
+"CNS","02/15/2024"
+"PPL","03/10/2024"
