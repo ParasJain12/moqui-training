@@ -1,23 +1,41 @@
-def createMoquiTraining(Map input, ExecutionContext ec) {
-    def trainingName = input.trainingName
-    def trainingDate = ec.l10n.parseDate(input.trainingDate, "MM/dd/yyyy")
-    ec.context.formattedTrainingDate = formattedDate
+import org.moqui.context.ExecutionContext
+import org.moqui.entity.EntityValue
 
-    if (!trainingName) {
-        ec.message.addError("trainingName is mandatory")
-        return [:]
-    }
-    if (!trainingDate) {
-        ec.message.addError("trainingDate must follow MM/dd/yyyy format")
-        return [:]
-    }
+// This script assumes it's running in the context of a Moqui service-call
+ExecutionContext ec = context.ec
 
-    def result = ec.service.sync()
-            .name("create#MoquiTraining")
-            .parameters([trainingName: trainingName, trainingDate: trainingDate])
-            .call()
+// Input parameters
+def trainingName = context.trainingName
+def trainingDate = context.trainingDate
+def trainingPrice = context.trainingPrice
+def trainingDuration = context.trainingDuration
 
-    return [
-            trainingId: result.trainingId
-    ]
+// Validate required fields
+if (!trainingName) {
+    ec.message.addError("Training name is required.")
+    return
 }
+
+if (!trainingDate) {
+    ec.message.addError("Training date is required.")
+    return
+}
+
+// Explicitly generate a unique ID
+def trainingId = ec.entity.sequencedIdPrimary("MoquiTraining", null, null)
+
+// Create the MoquiTraining entity record
+EntityValue trainingRecord = ec.entity.makeValue("moqui.training.MoquiTraining")
+
+trainingRecord.set("trainingId", trainingId) // Explicitly set trainingId
+trainingRecord.set("trainingName", trainingName)
+trainingRecord.set("trainingDate", trainingDate)
+
+if (trainingPrice != null) trainingRecord.set("trainingPrice", trainingPrice)
+if (trainingDuration != null) trainingRecord.set("trainingDuration", trainingDuration)
+
+// Save the record
+trainingRecord = trainingRecord.create()
+
+// Set the output parameter
+context.trainingId = trainingRecord.get("trainingId")
