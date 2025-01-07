@@ -77,9 +77,25 @@
         </service>
 
         <!-- Delete Service for ContactMech-->
+<!--        <service verb="delete" noun="ContactMech">-->
+<!--            <in-parameters>-->
+<!--                <auto-parameters entity-name="moqui.contactmech.ContactMech" include="pk"/>-->
+<!--            </in-parameters>-->
+<!--            <actions>-->
+<!--                <entity-find-one entity-name="moqui.contactmech.ContactMech" value-field="deletevalue"/>-->
+<!--                <if condition="deletevalue != null">-->
+<!--                    <entity-delete value-field="deletevalue"/>-->
+<!--                </if>-->
+<!--                <else>-->
+<!--                    <set field="message" value="Please enter only Valid Id"/>-->
+<!--                </else>-->
+<!--            </actions>-->
+<!--        </service>-->
+
         <service verb="delete" noun="ContactMech" type="entity-auto">
             <in-parameters>
                 <auto-parameters include="pk" required="true"/>
+                <parameter name="contactMechId" required="true"/>
             </in-parameters>
         </service>
 
