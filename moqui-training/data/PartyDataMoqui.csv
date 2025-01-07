@@ -1,0 +1,6 @@
+# Entity name and type
+moqui.party.Party,demo
+# Our data
+party_id, partyType, firstName, lastName
+3, Business, Jonny, Dao
+4, Customer, Steve, Smith

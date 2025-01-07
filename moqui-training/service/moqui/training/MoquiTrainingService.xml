@@ -37,6 +37,7 @@
             <parameter name="trainingId"/>
         </out-parameters>
     </service>
+
     <!--     Fetching record from the database -->
     <service verb="find" noun="MoquiTraining">
         <in-parameters>
@@ -56,6 +57,7 @@
             </entity-find>
         </actions>
     </service>
+
     <!--     Service to update/create a record in our entity -->
     <service verb="store" noun="MoquiTraining">
         <in-parameters>

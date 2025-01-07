@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+    <!-- Service through entity-auto for party entity-->
+    <service verb="create" noun="Party" type="entity-auto" >
+        <in-parameters>
+            <auto-parameters include="nonpk"/>
+            <parameter name="party_id" required="true"/>
+            <parameter name="party_type" required="true"/>
+            <parameter name="first_name" required="true"/>
+            <parameter name="last_name" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters include="pk" required="true"/>
+        </out-parameters>
+    </service>
+
+    <!--    Delete service for party entity-->
+    <service verb="delete" noun="Party" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="pk" required="true" />
+        </in-parameters>
+    </service>
+
+    <!--    Service to update/create a record in our party entity-->
+    <service verb="store" noun="Party">
+        <in-parameters>
+            <parameter name="party_id" required="true"/>
+            <parameter name="party_type"/>
+            <parameter name="first_name"/>
+            <parameter name="last_name"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="party_id"/>
+        </out-parameters>
+        <actions>
+            <script>
+                <![CDATA[
+                // Fetch existing record by trainingID or trainingName
+                def trainingRecord = ec.entity.find("moqui.party.Party")
+                if (context.party_id) {
+                    trainingRecord.condition("party_id", context.party_id)
+                }
+                trainingRecord = trainingRecord.one()
+
+                if (trainingRecord) {
+                    // Update existing record
+                    trainingRecord.set("party_type", context.party_type)
+                    trainingRecord.set("first_name", context.first_name)
+                    trainingRecord.set("last_name", context.last_name)
+                    trainingRecord.update()
+                    context.party_id = trainingRecord.party_id
+                } else {
+                    // Create a new record
+                    def newParty_id = ec.entity.sequencedIdPrimary("moqui.party.Party", null, null)
+                    ec.entity.makeValue("moqui.party.Party")
+                        .set("party_id", newParty_id)
+                        .set("party_type", context.party_type)
+                        .set("first_name", context.first_name)
+                        .set("last_name", context.last_name)
+                        .create()
+                    context.party_id = newParty_id
+                }
+            ]]>
+            </script>
+        </actions>
+    </service>
+</services>
