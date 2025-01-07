@@ -1,78 +1,134 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- API functionality on Party entity-->
-<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/rest-api-3.xsd" name="PartyAPI"
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="file://C:/Users/hp/Downloads/sandbox/moqui-framework/framework/xsd/rest-api-3.xsd"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/rest-api-3.xsd" name="PartyAPI"
           displayName="REST API Entity" version="2.0.0">
-    <resource name="partyGet" require-authentication="anonymous-view">
-        <id name="party_id">
-        <method type="get">
-            <entity name="Party" operation="one" />
-        </method>
-        </id>
+        <!-- API Endpoints on Party Entity-->
+        <!--Get Method-->
+        <resource name="partyGet" require-authentication="anonymous-view">
             <method type="get">
                 <entity name="Party" operation="list" />
             </method>
-    </resource>
-
-    <resource name="partyPost" require-authentication="anonymous-all">
-        <method type="post">
-            <service name="moqui.training.PartyService.create#Party"/>
-        </method>
-
-    </resource>
-
-    <resource name="partyPut" require-authentication="anonymous-all">
-        <method type="put">
-            <service name="moqui.training.PartyService.store#Party"/>
-        </method>
-        <id name="party_id">
-            <method type="put">
-                <service name="moqui.training.PartyService.store#Party"/>
-            </method>
-        </id>
-    </resource>
-
-    <resource name="partyDelete" require-authentication="anonymous-all">
-        <id name="party_id">
-            <method type="delete">
-                <service name="moqui.training.PartyService.delete#Party"/>
-            </method>
-        </id>
-    </resource>
-
-    <!-- Product API Functionlaity-->
-    <resource name="productGet" require-authentication="anonymous-all">
-        <method type="get">
-            <entity name="Product" operation="list" />
-        </method>
-        <id name="product_id">
+            <id name="partyId">
             <method type="get">
-                <entity name="Product" operation="one" />
+                <entity name="Party" operation="one" />
             </method>
-        </id>
-    </resource>
+            </id>
+        </resource>
 
-    <resource name="productPost" require-authentication="anonymous-all">
-        <method type="post">
-            <service name="moqui.training.ProductService.create#Product"/>
-        </method>
-    </resource>
+        <!--Post Method-->
+        <resource name="partyPost" require-authentication="anonymous-all">
+            <method type="post">
+                <service name="moqui.training.PartyService.create#Party"/>
+            </method>
+        </resource>
 
-    <resource name="productPut" require-authentication="anonymous-all">
-        <method type="put">
-            <service name="moqui.training.ProductService.store#Product"/>
-        </method>
-        <id name="product_id">
+        <!--Put Method-->
+        <resource name="partyPut" require-authentication="anonymous-all">
             <method type="put">
-                <service name="moqui.training.ProductService.store#Product"/>
+                <service name="moqui.training.PartyService.update#Party"/>
             </method>
-        </id>
-    </resource>
+            <id name="partyId">
+                <method type="put">
+                    <service name="moqui.training.PartyService.update#Party"/>
+                </method>
+            </id>
+        </resource>
 
-    <resource name="productDelete" require-authentication="anonymous-all">
-        <id name="product_id">
-            <method type="delete">
-                <service name="moqui.training.ProductService.delete#Product"/>
+        <!--Delete Method-->
+        <resource name="partyDelete" require-authentication="anonymous-all">
+            <id name="partyId">
+                <method type="delete">
+                    <service name="moqui.training.PartyService.delete#Party"/>
+                </method>
+            </id>
+        </resource>
+
+        <!--API Endpoints for Product Entity-->
+        <!--Get Method-->
+        <resource name="productGet" require-authentication="anonymous-all">
+            <method type="get">
+                <entity name="Product" operation="list" />
             </method>
-        </id>
-    </resource>
+            <id name="productId">
+                <method type="get">
+                    <entity name="Product" operation="one" />
+                </method>
+            </id>
+        </resource>
+
+        <!--Post Method-->
+        <resource name="productPost" require-authentication="anonymous-all">
+            <method type="post">
+                <service name="moqui.training.ProductService.create#Product"/>
+            </method>
+        </resource>
+
+        <!--Put Method-->
+        <resource name="productPut" require-authentication="anonymous-all">
+            <method type="put">
+                <service name="moqui.training.ProductService.update#Product"/>
+            </method>
+            <id name="productId">
+                <method type="put">
+                    <service name="moqui.training.ProductService.update#Product"/>
+                </method>
+            </id>
+        </resource>
+
+        <!--Delete Method-->
+        <resource name="productDelete" require-authentication="anonymous-all">
+            <id name="productId">
+                <method type="delete">
+                    <service name="moqui.training.ProductService.delete#Product"/>
+                </method>
+            </id>
+        </resource>
+
+        <!-- API endpoints for ContactMech -->
+        <!--Post Method-->
+        <resource name="partyPostContact" require-authentication="anonymous-all">
+            <id name="partyId">
+                <resource name="contactMechPost">
+                    <method type="post">
+                        <service name="moqui.training.PartyService.create#ContactMech"/>
+                    </method>
+                </resource>
+            </id>
+        </resource>
+
+        <!--Get Method-->
+        <resource name="partyGetContact" require-authentication="anonymous-all">
+            <id name="partyId">
+                <resource name="contactMechGet">
+                    <method type="get">
+                        <entity name="ContactMech" operation="one"/>
+                    </method>
+                </resource>
+            </id>
+        </resource>
+
+        <!--Put Method-->
+        <resource name="partyPutContact" require-authentication="anonymous-all">
+            <id name="partyId">
+                <resource name="contactMechPut">
+                    <method type="put">
+                        <service name="moqui.training.PartyService.update#ContactMech"/>
+                    </method>
+                </resource>
+            </id>
+        </resource>
+
+        <!--Delete Method-->
+<!--        <resource name="partyDeleteContact" require-authentication="anonymous-all">-->
+<!--            <id name="partyId">-->
+<!--                <resource name="contactMechDelete">-->
+<!--                    <id name="contactMechId">-->
+<!--                        <method type="delete">-->
+<!--                            <service name="moqui.training.PartyService.delete#ContactMech"/>-->
+<!--                        </method>-->
+<!--                    </id>-->
+<!--                </resource>-->
+<!--            </id>-->
+<!--        </resource>-->
 </resource>
