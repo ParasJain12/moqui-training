@@ -95,7 +95,6 @@
         <service verb="delete" noun="ContactMech" type="entity-auto">
             <in-parameters>
                 <auto-parameters include="pk" required="true"/>
-                <parameter name="contactMechId" required="true"/>
             </in-parameters>
         </service>
 
