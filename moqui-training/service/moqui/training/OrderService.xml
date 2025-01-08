@@ -2,6 +2,7 @@
     <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xmlns="file://C:/Users/hp/Downloads/sandbox/moqui-framework/framework/xsd/service-definition-3.xsd"
               xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+
         <!-- Create Service for Order Entity-->
         <service verb="create" noun="OrderHeader" type="entity-auto" >
             <in-parameters>
@@ -30,61 +31,18 @@
                 <auto-parameters entity-name="moqui.orderheader.OrderHeader" include="all"/>
             </in-parameters>
         </service>
-<!--        <service verb="store" noun="OrderHeader">-->
-<!--            <in-parameters>-->
-<!--                <parameter name="orderId" required="true"/>-->
-<!--                <parameter name="orderDate"/>-->
-<!--                <parameter name="partyId"/>-->
-<!--                <parameter name="shippingContactMechId" />-->
-<!--                <parameter name="billingContactMechId" />-->
-<!--            </in-parameters>-->
-<!--            <out-parameters>-->
-<!--                <parameter name="orderId"/>-->
-<!--            </out-parameters>-->
-<!--            <actions>-->
-<!--                <script>-->
-<!--                    <![CDATA[-->
-<!--                    // Fetch existing record by OrderID-->
-<!--                    def trainingRecord = ec.entity.find("moqui.orderheader.OrderHeader")-->
-<!--                    if (context.orderId) {-->
-<!--                        trainingRecord.condition("orderId", context.orderId)-->
-<!--                    }-->
-<!--                    trainingRecord = trainingRecord.one()-->
 
-<!--                    if (trainingRecord) {-->
-<!--                        // Update existing record-->
-<!--                        trainingRecord.set("party_type", context.party_type)-->
-<!--                        trainingRecord.set("first_name", context.first_name)-->
-<!--                        trainingRecord.set("last_name", context.last_name)-->
-<!--                        trainingRecord.update()-->
-<!--                        context.party_id = trainingRecord.party_id-->
-<!--                    } else {-->
-<!--                        // Create a new record-->
-<!--                        def newParty_id = ec.entity.sequencedIdPrimary("moqui.party.Party", null, null)-->
-<!--                        ec.entity.makeValue("moqui.party.Party")-->
-<!--                            .set("party_id", newParty_id)-->
-<!--                            .set("party_type", context.party_type)-->
-<!--                            .set("first_name", context.first_name)-->
-<!--                            .set("last_name", context.last_name)-->
-<!--                            .create()-->
-<!--                        context.party_id = newParty_id-->
-<!--                    }-->
-<!--                ]]>-->
-<!--                </script>-->
-<!--            </actions>-->
-<!--        </service>-->
-
-    <!--Create Service for OrderItem-->
-    <service verb="create" noun="OrderItem" type="entity-auto">
-        <in-parameters>
-<!--            <parameter name="orderItemSequenceId" required="true"/>-->
-            <parameter name="quantity" required="true"/>
-            <parameter name="status" required="true"/>
-            <parameter name="orderId" required="true"/>
-            <parameter name="productId" required="true"/>
-        </in-parameters>
-        <out-parameters>
-            <auto-parameters include="pk" required="true"/>
-        </out-parameters>
-    </service>
-</services>
+         <!--Create Service for OrderItem-->
+        <service verb="create" noun="OrderItem" type="entity-auto">
+            <in-parameters>
+    <!--            <parameter name="orderItemSequenceId" required="true"/>-->
+                <parameter name="quantity" required="true"/>
+                <parameter name="status" required="true"/>
+                <parameter name="orderId" required="true"/>
+                <parameter name="productId" required="true"/>
+            </in-parameters>
+            <out-parameters>
+                <auto-parameters include="pk" required="true"/>
+            </out-parameters>
+        </service>
+    </services>

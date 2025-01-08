@@ -1,60 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
-    <!-- Create Service for Product Entity-->
-    <service verb="create" noun="Product" type="entity-auto" >
-        <in-parameters>
-            <auto-parameters include="nonpk"/>
-<!--            <parameter name="productId" required="true"/>-->
-            <parameter name="product_name" required="true"/>
-            <parameter name="color" required="true"/>
-            <parameter name="size" required="true"/>
-        </in-parameters>
-        <out-parameters>
-            <auto-parameters include="pk" required="true"/>
-        </out-parameters>
-    </service>
 
-    <!-- Delete service for product entity-->
-    <service verb="delete" noun="Product" type="entity-auto">
-        <in-parameters>
-            <auto-parameters include="pk" required="true" />
-        </in-parameters>
-    </service>
+        <!-- Create Service for Product Entity-->
+        <service verb="create" noun="Product" type="entity-auto" >
+            <in-parameters>
+                <auto-parameters include="nonpk"/>
+    <!--            <parameter name="productId" required="true"/>-->
+                <parameter name="product_name" required="true"/>
+                <parameter name="color" required="true"/>
+                <parameter name="size" required="true"/>
+            </in-parameters>
+            <out-parameters>
+                <auto-parameters include="pk" required="true"/>
+            </out-parameters>
+        </service>
 
-    <!-- Update/Create for product Entity-->
-    <service verb="update" noun="Product" type="entity-auto">
-        <in-parameters>
-            <auto-parameters entity-name="moqui.product.Product" include="all"/>
-        </in-parameters>
-    </service>
-<!--    <service verb="store" noun="Product">-->
-<!--        <in-parameters>-->
-<!--            <parameter name="productId" required="true"/>-->
-<!--            <parameter name="productName"/>-->
-<!--            <parameter name="color"/>-->
-<!--            <parameter name="size"/>-->
-<!--        </in-parameters>-->
-<!--        <out-parameters>-->
-<!--            <parameter name="productId"/>-->
-<!--        </out-parameters>-->
-<!--        <actions>-->
-<!--            <script>-->
-<!--                <![CDATA[-->
-<!--                // Fetch existing record by productID-->
-<!--                def trainingRecord = ec.entity.find("moqui.product.Product")-->
-<!--                if (context.productId) {-->
-<!--                    trainingRecord.condition("productId", context.productId)-->
-<!--                }-->
-<!--                trainingRecord = trainingRecord.one()-->
-<!--                // Update existing record-->
-<!--                trainingRecord.set("productName", context.productName)-->
-<!--                trainingRecord.set("color", context.color)-->
-<!--                trainingRecord.set("size", context.size)-->
-<!--                trainingRecord.update()-->
-<!--                context.productId = trainingRecord.productId-->
+        <!-- Delete service for product entity-->
+        <service verb="delete" noun="Product" type="entity-auto">
+            <in-parameters>
+                <auto-parameters include="pk" required="true" />
+            </in-parameters>
+        </service>
 
-<!--            ]]>-->
-<!--            </script>-->
-<!--        </actions>-->
-<!--    </service>-->
-</services>
+        <!-- Update/Create for product Entity-->
+        <service verb="update" noun="Product" type="entity-auto">
+            <in-parameters>
+                <auto-parameters entity-name="moqui.product.Product" include="all"/>
+            </in-parameters>
+        </service>
+    </services>
