@@ -4,9 +4,9 @@
         <!-- Create Service for Product Entity-->
         <service verb="create" noun="Product" type="entity-auto" >
             <in-parameters>
-                <auto-parameters include="nonpk"/>
+<!--                <auto-parameters include="nonpk"/>-->
     <!--            <parameter name="productId" required="true"/>-->
-                <parameter name="product_name" required="true"/>
+                <parameter name="productName" required="true"/>
                 <parameter name="color" required="true"/>
                 <parameter name="size" required="true"/>
             </in-parameters>
@@ -22,7 +22,7 @@
             </in-parameters>
         </service>
 
-        <!-- Update/Create for product Entity-->
+        <!-- Update for product Entity-->
         <service verb="update" noun="Product" type="entity-auto">
             <in-parameters>
                 <auto-parameters entity-name="moqui.product.Product" include="all"/>

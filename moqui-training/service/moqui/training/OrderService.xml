@@ -6,7 +6,7 @@
         <!-- Create Service for Order Entity-->
         <service verb="create" noun="OrderHeader" type="entity-auto" >
             <in-parameters>
-                <auto-parameters include="nonpk"/>
+<!--                <auto-parameters include="nonpk"/>-->
 <!--                <parameter name="orderId" required="true"/>-->
                 <parameter name="orderDate" required="true"/>
                 <parameter name="partyId" required="true"/>
