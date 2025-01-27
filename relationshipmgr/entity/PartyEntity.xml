@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="file://C:/Users/hp/Downloads/sandbox/moqui-framework/framework/xsd/entity-definition-3.xsd"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/moqui-conf-3.xsd">
+    <entity entity-name="Party" package="moqui.party">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="partyTypeEnumId" type="id"/>
+        <relationship type="one-nofk" related="moqui.party.Person"/>
+        <relationship type="one-nofk" related="moqui.party.Organization"/>
+<!--        <relationship type="one" related="moqui.party.PartyType">-->
+<!--            <key-map field-name="partyTypeId" related="partyTypeId"/>-->
+<!--        </relationship>-->
+<!--        <relationship type="many" related="moqui.party.PartyRole">-->
+<!--            <key-map field-name="partyId"/></relationship>-->
+        <relationship type="one" related="moqui.basic.Enumeration" title="PartyType">
+                <key-map field-name="partyTypeEnumId" />
+        </relationship>
+        <seed-data>
+            <moqui.basic.EnumerationType description="Party Type" enumTypeId="PartyType"/>
+            <moqui.basic.Enumeration description="Person" enumId="Person" enumTypeId="PartyType" />
+            <moqui.basic.Enumeration description="Organization" enumId="Organization" enumTypeId="PartyType" />
+        </seed-data>
+
+    </entity>
+
+    <!--Person Entity-->
+    <entity entity-name="Person" package="moqui.party">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="firstName" type="text-medium"/>
+        <field name="lastName" type="text-medium"/>
+        <field name="birthDate" type="date" />
+        <relationship type="one" related="moqui.party.Party">
+            <key-map field-name="partyId" related="partyId"/>
+        </relationship>
+    </entity>
+
+    <!--Organization Entity / PartyGroup -->
+    <entity entity-name="Organization" package="moqui.party">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="organizationName" type="text-medium"/>
+        <relationship type="one" related="moqui.party.Party">
+            <key-map field-name="partyId" related="partyId"/>
+        </relationship>
+    </entity>
+
+    <entity entity-name="PartyRole" package="moqui.party">
+<!--        <field name="partyRoleId" type="id" is-pk="true"/>-->
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="roleTypeEnumId" type="id" is-pk="true"/>
+<!--        <relationship type="one" related="moqui.party.RoleType">-->
+<!--            <key-map field-name="roleTypeId" related="roleTypeId"/>-->
+<!--        </relationship>-->
+        <relationship type="many" related="moqui.party.Party">
+            <key-map field-name="partyId" related="partyId" />
+        </relationship>
+        <relationship type="one" related="moqui.basic.Enumeration" title="RoleType">
+            <key-map field-name="roleTypeEnumId" />
+        </relationship>
+        <seed-data>
+            <moqui.basic.EnumerationType description="Role Type" enumTypeId="RoleType"/>
+            <moqui.basic.Enumeration description="Student" enumId="Student" enumTypeId="RoleType" />
+            <moqui.basic.Enumeration description="Faculty" enumId="Faculty" enumTypeId="RoleType" />
+            <moqui.basic.Enumeration description="University" enumId="University" enumTypeId="RoleType" />
+        </seed-data>
+    </entity>
+
+<!--    <entity entity-name="RoleType" package="moqui.party">-->
+<!--        <field name="roleTypeId" type="id" is-pk="true"/>-->
+<!--        <field name="description" type="text-long"/>-->
+<!--        <seed-data>-->
+<!--            <RoleType roleTypeId="Person" description="Person"/>-->
+<!--            <RoleType roleTypeId="Organization" description="Organization"/>-->
+<!--        </seed-data>-->
+<!--    </entity>-->
+
+<!--    <entity entity-name="PartyType" package="moqui.party">-->
+<!--        <field name="partyTypeId" type="id" is-pk="true"/>-->
+<!--        <field name="description" type="text-long"/>-->
+<!--    </entity>-->
+</entities>

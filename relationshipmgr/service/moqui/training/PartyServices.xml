@@ -9,39 +9,75 @@
         </out-parameters>
     </service>
     
-<!--    <service verb="delete" noun="Party" type="entity-auto">-->
-<!--        <in-parameters>-->
-<!--            <auto-parameters include="pk" required="true"/>-->
-<!--        </in-parameters>-->
-<!--    </service>-->
+    <service verb="delete" noun="Party" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="pk" required="true"/>
+        </in-parameters>
+    </service>
+    
+    <service verb="fetch" noun="Party">
+        <in-parameters>
+            <parameter name="partyId" entity-name="moqui.party.Party"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="partyList" required="true"/>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="moqui.party.Party" list="partyList">
+                <econdition field-name="partyId"/>
+                <select-field field-name="partyId"/>
+                <select-field field-name="partyTypeId"/>
+            </entity-find>
+        </actions>
+    </service>
 
+<!--    <service verb="fetch" noun="Party" type="entity-auto">-->
+<!--        <in-parameters>-->
+<!--            <parameter name="partyId" entity-name="moqui.party.Party"/>-->
+<!--        </in-parameters>-->
+<!--        <out-parameters>-->
+<!--           <auto-parameters include="all" required="true"/>-->
+<!--        </out-parameters>-->
+<!--    </service>-->
 <!--    <service verb="update" noun="Party" type="entity-auto">-->
 <!--        <in-parameters>-->
 <!--            <auto-parameters entity-name="moqui.party.Party" include="all"/>-->
 <!--        </in-parameters>-->
 <!--    </service>-->
 
-<!--    <service verb="create" noun="Person" type="entity-auto">-->
-<!--        <in-parameters>-->
-<!--            <auto-parameters include="nonpk" />-->
-<!--        </in-parameters>-->
-<!--    </service>-->
+    <service verb="create" noun="Person" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="all" />
+        </in-parameters>
+        <out-parameters>
+            <parameter name="partyId" required="true"/>
+        </out-parameters>
+    </service>
 
-<!--    <service verb="create" noun="Organization" type="entity-auto">-->
-<!--        <in-parameters>-->
-<!--            <auto-parameters include="nonpk" />-->
-<!--        </in-parameters>-->
-<!--    </service>-->
+    <service verb="create" noun="Organization" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="all" />
+        </in-parameters>
+        <out-parameters>
+            <parameter name="partyId" required="true"/>
+        </out-parameters>
+    </service>
 
 <!--    <service verb="create" noun="RoleType" type="entity-auto">-->
 <!--        <in-parameters>-->
-<!--            <auto-parameters include="nonpk" />-->
+<!--            <auto-parameters include="all" />-->
 <!--        </in-parameters>-->
 <!--    </service>-->
 
 <!--    <service verb="create" noun="PartyType" type="entity-auto">-->
 <!--        <in-parameters>-->
-<!--            <auto-parameters include="nonpk" />-->
+<!--            <auto-parameters include="all" />-->
 <!--        </in-parameters>-->
 <!--    </service>-->
+
+    <service verb="create" noun="PartyRole" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="all" />
+        </in-parameters>
+    </service>
 </services>

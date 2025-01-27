@@ -1,0 +1,41 @@
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+
+    <service verb="create" noun="ContactMech" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="all" />
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters include="pk" />
+        </out-parameters>
+    </service>
+
+    <service verb="create" noun="TelecomNumber" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="all" />
+        </in-parameters>
+    </service>
+
+    <service verb="create" noun="PostalAddress" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="all" />
+        </in-parameters>
+    </service>
+
+    <service verb="create" noun="PartyContactMech" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="all" />
+        </in-parameters>
+    </service>
+
+<!--    <service verb="create" noun="ContactMechPurpose" type="entity-auto">-->
+<!--        <in-parameters>-->
+<!--            <auto-parameters include="all" />-->
+<!--        </in-parameters>-->
+<!--    </service>-->
+
+<!--    <service verb="create" noun="ContactMechType" type="entity-auto">-->
+<!--        <in-parameters>-->
+<!--            <auto-parameters include="all" />-->
+<!--        </in-parameters>-->
+<!--    </service>-->
+</services>
