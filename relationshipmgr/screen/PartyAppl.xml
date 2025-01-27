@@ -1,0 +1,38 @@
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-3.xsd"
+        require-authentication="anonymous-all" default-menu-title="Applications">
+    <widgets>
+<!--        <render-mode><text type="html"><![CDATA[<html><body>]]></text></render-mode>-->
+<!--        <container><label text="Hello world"/></container>-->
+<!--        <render-mode><text type="html"><![CDATA[</body></html>]]></text></render-mode>-->
+
+<!--        <container-dialog id="CreateParty" button-text="Create Party" type="success">-->
+<!--            <label text="Create Party using partyid and partytypeid" type="p"/>-->
+<!--            <form-single name="CreateParty" transition="createParty">-->
+<!--                <field name="partyId"><default-field/></field>-->
+<!--                <field name="partyTypeId"><default-field/></field>-->
+<!--                <field name="submitButton"><default-field title="Create"><submit/></default-field></field>-->
+<!--            </form-single>-->
+<!--        </container-dialog>-->
+        <screen require-authentication="anonymous-all">
+            <transition name="createParty">
+                <service-call name="create#Party"/>
+                <default-response url="."/>
+            </transition>
+<!--            <actions>-->
+<!--                <entity-find entity-name="moqui.party.Party" list="tutorialList">-->
+<!--                    <search-form-inputs/></entity-find>-->
+<!--            </actions>-->
+            <widgets>
+                <container-dialog id="CreateParty" button-text="Create Party">
+                    <form-single name="CreateParty" transition="createParty">
+                       <auto-fields-entity entity-name="Party"
+                                           field-type="edit"/>
+                        <field name="submitButton">
+                            <default-field title="Create"><submit/></default-field>
+                        </field>
+                    </form-single>
+                </container-dialog>
+            </widgets>
+        </screen>
+    </widgets>
+</screen>
